@@ -4,7 +4,7 @@
     "keywords": ["laravel", "esadad", "payment", "gateway", "soap", "saudi", "knet"],
     "type": "library",
     "license": "MIT",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "autoload": {
         "psr-4": {
             "MohZubiri\\ESadad\\": "src/"
@@ -57,7 +57,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MohZubiri\\ESadad\\ESadadServiceProvider"
+                "MohZubiri\\ESadad\\Providers\\ESadadServiceProvider"
             ],
             "aliases": {
                 "ESadad": "MohZubiri\\ESadad\\Facades\\ESadad"

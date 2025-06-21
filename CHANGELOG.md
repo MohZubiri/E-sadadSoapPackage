@@ -4,6 +4,11 @@ All notable changes to `mohzubiri/laravel-esadad` will be documented in this fil
 
 ## [Unreleased]
 
+## [1.0.14] - 2025-06-21
+### Fixed
+- Removed duplicate Container import in ESadadServiceProvider
+- Cleaned up unused imports in service provider
+
 ## [1.0.13] - 2025-06-21
 ### Fixed
 - Fixed service provider binding for EsadadConnectionService

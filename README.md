@@ -1,8 +1,9 @@
 # Laravel e-SADAD Payment Gateway
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/your-vendor/laravel-esadad.svg?style=flat-square)](https://packagist.org/packages/your-vendor/laravel-esadad)
-[![Total Downloads](https://img.shields.io/packagist/dt/your-vendor/laravel-esadad.svg?style=flat-square)](https://packagist.org/packages/your-vendor/laravel-esadad)
-[![License](https://img.shields.io/packagist/l/your-vendor/laravel-esadad.svg?style=flat-square)](https://github.com/your-vendor/laravel-esadad/blob/main/LICENSE)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mohzubiri/laravel-esadad.svg?style=flat-square)](https://packagist.org/packages/mohzubiri/laravel-esadad)
+[![Total Downloads](https://img.shields.io/packagist/dt/mohzubiri/laravel-esadad.svg?style=flat-square)](https://packagist.org/packages/mohzubiri/laravel-esadad)
+[![License](https://img.shields.io/packagist/l/mohzubiri/laravel-esadad.svg?style=flat-square)](https://github.com/MohZubiri/E-sadadSoapPackeg/blob/main/LICENSE)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/MohZubiri/E-sadadSoapPackeg/run-tests.yml?branch=main&label=tests)](https://github.com/MohZubiri/E-sadadSoapPackeg/actions?query=workflow%3Arun-tests+branch%3Amain)
 
 A Laravel package for integrating with the e-SADAD payment gateway. This package provides a simple and clean API to process payments through the e-SADAD payment system.
 
@@ -18,32 +19,35 @@ A Laravel package for integrating with the e-SADAD payment gateway. This package
 
 ## Requirements
 
-- PHP 8.0 or higher
-- Laravel 9.0 or higher
+- PHP 8.1 or higher
+- Laravel 10.0 or higher
 - OpenSSL PHP Extension
 - cURL PHP Extension
 - JSON PHP Extension
 - XML PHP Extension
 - SOAP PHP Extension
+- Java (for signature generation)
 
 ## Installation
+
+### For Laravel Applications
 
 1. Install the package via Composer:
 
 ```bash
-composer require your-vendor/laravel-esadad
+composer require mohzubiri/laravel-esadad
 ```
 
 2. Publish the configuration file:
 
 ```bash
-php artisan vendor:publish --provider="YourVendor\\ESadad\\Providers\\ESadadServiceProvider" --tag="esadad-config"
+php artisan vendor:publish --provider="MohZubiri\\ESadad\\ESadadServiceProvider" --tag="esadad-config"
 ```
 
-3. Publish the views (optional):
+3. Publish the views (optional, only if you want to customize them):
 
 ```bash
-php artisan vendor:publish --provider="YourVendor\\ESadad\\Providers\\ESadadServiceProvider" --tag="esadad-views"
+php artisan vendor:publish --provider="MohZubiri\\ESadad\\ESadadServiceProvider" --tag="esadad-views"
 ```
 
 4. Run the migrations:
@@ -58,7 +62,48 @@ Or use the install command for a guided installation:
 php artisan esadad:install
 ```
 
+### Manual Installation (For Package Development)
+
+1. Clone the repository:
+```bash
+git clone https://github.com/MohZubiri/E-sadadSoapPack.git
+```
+
+2. Add the repository to your Laravel application's `composer.json`:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/path/to/laravel-esadad"
+        }
+    ]
+}
+```
+
+3. Require the package:
+```bash
+composer require mohzubiri/laravel-esadad:@dev
+```
+
 ## Configuration
+
+### Environment Variables
+
+Add the following to your `.env` file:
+
+```env
+ESADAD_MERCHANT_CODE=your_merchant_code
+ESADAD_MERCHANT_PASSWORD=your_merchant_password
+ESADAD_KEY_PASSWORD=your_keystore_password
+ESADAD_KEY_ALIAS=your_key_alias
+ESADAD_VERIFIER_ALIAS=your_verifier_alias
+ESADAD_ENCRYPT_ALIAS=your_encrypt_alias
+ESADAD_CURRENCY_CODE=your_currency_code  # Default: 886 (Yemeni Riyal)
+```
+
+### Configuration File
 
 After publishing the configuration file, you can find it at `config/esadad.php`. Here's a quick overview of the available options:
 

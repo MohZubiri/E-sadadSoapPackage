@@ -2,10 +2,11 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mohzubiri/laravel-esadad.svg?style=flat-square)](https://packagist.org/packages/mohzubiri/laravel-esadad)
 [![Total Downloads](https://img.shields.io/packagist/dt/mohzubiri/laravel-esadad.svg?style=flat-square)](https://packagist.org/packages/mohzubiri/laravel-esadad)
-[![License](https://img.shields.io/packagist/l/mohzubiri/laravel-esadad.svg?style=flat-square)](https://github.com/MohZubiri/E-sadadSoapPackeg/blob/main/LICENSE)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/MohZubiri/E-sadadSoapPackeg/run-tests.yml?branch=main&label=tests)](https://github.com/MohZubiri/E-sadadSoapPackeg/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![License](https://img.shields.io/packagist/l/mohzubiri/laravel-esadad.svg?style=flat-square)](https://github.com/MohZubiri/E-sadadSoapPackage/blob/main/LICENSE)
+[![PHP Version](https://img.shields.io/packagist/php-v/mohzubiri/laravel-esadad.svg?style=flat-square)](https://php.net/)
+[![Laravel Version](https://img.shields.io/badge/Laravel-10.x%2B-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
 
-A Laravel package for integrating with the e-SADAD payment gateway. This package provides a simple and clean API to process payments through the e-SADAD payment system.
+A Laravel package for integrating with the e-SADAD payment gateway. This package provides a simple and clean API to process payments through the e-SADAD payment system. The package is now more stable and includes several improvements for better integration with Laravel applications.
 
 ## Features
 
@@ -19,14 +20,20 @@ A Laravel package for integrating with the e-SADAD payment gateway. This package
 
 ## Requirements
 
-- PHP 8.1 or higher
+- PHP 8.1 or higher (PHP 8.3 supported)
 - Laravel 10.0 or higher
-- OpenSSL PHP Extension
-- cURL PHP Extension
-- JSON PHP Extension
-- XML PHP Extension
-- SOAP PHP Extension
+- Required PHP Extensions:
+  - OpenSSL
+  - cURL
+  - JSON
+  - XML
+  - SOAP
+  - Mbstring
+  - Fileinfo
 - Java (for signature generation)
+- Composer for dependency management
+
+## Installation
 
 ## Installation
 
@@ -35,22 +42,28 @@ A Laravel package for integrating with the e-SADAD payment gateway. This package
 1. Install the package via Composer:
 
 ```bash
-composer require mohzubiri/laravel-esadad
+composer require mohzubiri/laravel-esadad:^1.0.6
 ```
 
 2. Publish the configuration file:
 
 ```bash
-php artisan vendor:publish --provider="MohZubiri\\ESadad\\ESadadServiceProvider" --tag="esadad-config"
+php artisan vendor:publish --provider="MohZubiri\\ESadad\\Providers\\ESadadServiceProvider" --tag="esadad-config"
 ```
 
 3. Publish the views (optional, only if you want to customize them):
 
 ```bash
-php artisan vendor:publish --provider="MohZubiri\\ESadad\\ESadadServiceProvider" --tag="esadad-views"
+php artisan vendor:publish --provider="MohZubiri\\ESadad\\Providers\\ESadadServiceProvider" --tag="esadad-views"
 ```
 
-4. Run the migrations:
+4. Publish the assets (CSS, JS, images):
+
+```bash
+php artisan vendor:publish --provider="MohZubiri\\ESadad\\Providers\\ESadadServiceProvider" --tag="esadad-assets"
+```
+
+5. Run the migrations:
 
 ```bash
 php artisan migrate
@@ -61,6 +74,27 @@ Or use the install command for a guided installation:
 ```bash
 php artisan esadad:install
 ```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+
+## Security
+
+If you discover any security related issues, please email mohzubiri@example.com instead of using the issue tracker.
+
+## Credits
+
+- [Mohammed Zubiri](https://github.com/MohZubiri)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 ### Manual Installation (For Package Development)
 

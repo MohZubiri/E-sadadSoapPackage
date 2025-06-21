@@ -13,17 +13,13 @@ use Illuminate\Support\Arr;
 use MohZubiri\ESadad\ESadad;
 
 // Import Laravel helper functions
-if (!function_exists('app')) {
-    require __DIR__.'/../../vendor/laravel/framework/src/Illuminate/Foundation/helpers.php';
-}
-
-if (!function_exists('config')) {
-    require __DIR__.'/../../vendor/laravel/framework/src/Illuminate/Foundation/helpers.php';
-}
-
-if (!function_exists('route')) {
-    require __DIR__.'/../../vendor/laravel/framework/src/Illuminate/Foundation/helpers.php';
-}
+use function app;
+use function config;
+use function route;
+use function base_path;
+use function config_path;
+use function resource_path;
+use function public_path;
 
 if (! function_exists('config_path')) {
     /**

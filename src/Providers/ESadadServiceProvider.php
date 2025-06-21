@@ -6,18 +6,22 @@ namespace MohZubiri\ESadad\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Foundation\Application as LaravelApplication;
+use Laravel\Lumen\Application as LumenApplication;
 use MohZubiri\ESadad\Commands\InstallCommand;
 use MohZubiri\ESadad\ESadad;
 use MohZubiri\ESadad\Http\Controllers\ESadadController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\Router;
 use MohZubiri\ESadad\Services\EsadadConnectionService;
 use MohZubiri\ESadad\Services\EsadadPreperingService;
 use MohZubiri\ESadad\Services\EsadadSignatureService;
+use function config;
+use function file_exists;
 
 class ESadadServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -27,6 +31,13 @@ class ESadadServiceProvider extends ServiceProvider implements DeferrableProvide
      * @var string
      */
     protected $packagePath;
+
+    /**
+     * The path to the package's routes file.
+     *
+     * @var string
+     */
+    protected $loadRoutesFromPath;
 
     /**
      * Create a new service provider instance.
@@ -136,27 +147,55 @@ class ESadadServiceProvider extends ServiceProvider implements DeferrableProvide
      *
      * @return void
      */
+    /**
+     * Register the package routes.
+     *
+     * @return void
+     */
+    /**
+     * Register the package routes.
+     *
+     * @return void
+     */
     protected function registerRoutes()
     {
+        $config = $this->app->make('config');
         $routeConfig = [
-            'prefix' => config('esadad.route.prefix', 'esadad'),
+            'prefix' => $config->get('esadad.route.prefix', 'esadad'),
             'namespace' => 'MohZubiri\\ESadad\\Http\\Controllers',
-            'middleware' => array_merge(['web'], config('esadad.route.middleware', [])),
+            'middleware' => array_merge(['web'], (array) $config->get('esadad.route.middleware', [])),
             'as' => 'esadad.',
         ];
 
-        Route::group($routeConfig, function () {
-            $routesPath = __DIR__ . '/../routes/web.php';
-            if (file_exists($routesPath)) {
+        // First try to load routes from the published routes file
+        $routesPath = $config->get('esadad.routes.file') ?: $this->packagePath . '/routes/web.php';
+        
+        // If the routes file doesn't exist in the published location, use the package's default
+        if (!file_exists($routesPath)) {
+            $routesPath = $this->packagePath . '/src/routes/web.php';
+        }
+
+        // Only load routes if the file exists
+        if (file_exists($routesPath)) {
+            $app = $this->app;
+            
+            if (class_exists(LaravelApplication::class) && $app instanceof LaravelApplication) {
+                // For Laravel applications
                 $this->loadRoutesFrom($routesPath);
+            } elseif (class_exists(LumenApplication::class) && $app instanceof LumenApplication) {
+                // For Lumen applications
+                $app->router->group($routeConfig, function ($router) use ($routesPath) {
+                    require $routesPath;
+                });
             } else {
-                // Fallback to package path
-                $fallbackPath = $this->packagePath . '/src/routes/web.php';
-                if (file_exists($fallbackPath)) {
-                    $this->loadRoutesFrom($fallbackPath);
-                }
+                // Fallback for other cases
+                Route::group($routeConfig, function () use ($routesPath) {
+                    require $routesPath;
+                });
             }
-        });
+        } elseif ($this->app->bound('log')) {
+            $this->app['log']->warning("e-SADAD routes file not found at: " . $routesPath);
+        }
     }
 
     /**

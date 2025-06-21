@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\ESadad\Services;
+namespace MohZubiri\ESadad\Services;
 
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -10,7 +10,7 @@ class EsadadConnectionService extends BaseService
     /**
      * The signature service instance.
      *
-     * @var \YourVendor\ESadad\Services\EsadadSignatureService
+     * @var \MohZubiri\ESadad\Services\EsadadSignatureService
      */
     protected $signatureService;
 
@@ -18,7 +18,7 @@ class EsadadConnectionService extends BaseService
      * Create a new service instance.
      *
      * @param  array  $config
-     * @param  \YourVendor\ESadad\Services\EsadadSignatureService  $signatureService
+     * @param  \MohZubiri\ESadad\Services\EsadadSignatureService  $signatureService
      * @return void
      */
     public function __construct(array $config, EsadadSignatureService $signatureService)

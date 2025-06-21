@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace YourVendor\ESadad\Providers;
+namespace MohZubiri\ESadad\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
-use YourVendor\ESadad\Commands\InstallCommand;
-use YourVendor\ESadad\ESadad;
-use YourVendor\ESadad\Http\Controllers\ESadadController;
+use MohZubiri\ESadad\Commands\InstallCommand;
+use MohZubiri\ESadad\ESadad;
+use MohZubiri\ESadad\Http\Controllers\ESadadController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Routing\Router;
-use YourVendor\ESadad\Services\EsadadConnectionService;
-use YourVendor\ESadad\Services\EsadadPreperingService;
-use YourVendor\ESadad\Services\EsadadSignatureService;
+use MohZubiri\ESadad\Services\EsadadConnectionService;
+use MohZubiri\ESadad\Services\EsadadPreperingService;
+use MohZubiri\ESadad\Services\EsadadSignatureService;
 
 class ESadadServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -140,7 +140,7 @@ class ESadadServiceProvider extends ServiceProvider implements DeferrableProvide
     {
         $routeConfig = [
             'prefix' => config('esadad.route.prefix', 'esadad'),
-            'namespace' => 'YourVendor\\ESadad\\Http\\Controllers',
+            'namespace' => 'MohZubiri\\ESadad\\Http\\Controllers',
             'middleware' => array_merge(['web'], config('esadad.route.middleware', [])),
             'as' => 'esadad.',
         ];
@@ -158,7 +158,7 @@ class ESadadServiceProvider extends ServiceProvider implements DeferrableProvide
     protected function registerCommands()
     {
         $this->commands([
-            \YourVendor\ESadad\Console\Commands\InstallCommand::class,
+            \MohZubiri\ESadad\Console\Commands\InstallCommand::class,
         ]);
     }
 }

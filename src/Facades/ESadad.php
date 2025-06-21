@@ -1,14 +1,14 @@
 <?php
 
-namespace YourVendor\ESadad\Facades;
+namespace MohZubiri\ESadad\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \YourVendor\ESadad\ESadad processPayment(array $data)
- * @method static \YourVendor\ESadad\ESadad verifyOtp(string $otp)
+ * @method static \MohZubiri\ESadad\ESadad processPayment(array $data)
+ * @method static \MohZubiri\ESadad\ESadad verifyOtp(string $otp)
  *
- * @see \YourVendor\ESadad\ESadad
+ * @see \MohZubiri\ESadad\ESadad
  */
 class ESadad extends Facade
 {

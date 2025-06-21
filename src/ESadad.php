@@ -1,16 +1,16 @@
 <?php
 
-namespace YourVendor\ESadad;
+namespace MohZubiri\ESadad;
 
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Arr;
-use YourVendor\ESadad\Services\EsadadConnectionService;
-use YourVendor\ESadad\Services\EsadadPreperingService;
-use YourVendor\ESadad\Services\EsadadSignatureService;
+use MohZubiri\ESadad\Services\EsadadConnectionService;
+use MohZubiri\ESadad\Services\EsadadPreperingService;
+use MohZubiri\ESadad\Services\EsadadSignatureService;
 
-if (!function_exists('YourVendor\ESadad\data_get')) {
+if (!function_exists('MohZubiri\ESadad\data_get')) {
     /**
      * Get an item from an array or object using "dot" notation.
      *
@@ -25,7 +25,7 @@ if (!function_exists('YourVendor\ESadad\data_get')) {
     }
 }
 
-if (!function_exists('YourVendor\ESadad\now')) {
+if (!function_exists('MohZubiri\ESadad\now')) {
     /**
      * Create a new Carbon instance for the current time.
      *
@@ -43,21 +43,21 @@ class ESadad
     /**
      * The ESadad connection service instance.
      *
-     * @var \YourVendor\ESadad\Services\EsadadConnectionService
+     * @var \MohZubiri\ESadad\Services\EsadadConnectionService
      */
     protected $connectionService;
 
     /**
      * The ESadad preparing service instance.
      *
-     * @var \YourVendor\ESadad\Services\EsadadPreperingService
+     * @var \MohZubiri\ESadad\Services\EsadadPreperingService
      */
     protected $preparingService;
 
     /**
      * The ESadad signature service instance.
      *
-     * @var \YourVendor\ESadad\Services\EsadadSignatureService
+     * @var \MohZubiri\ESadad\Services\EsadadSignatureService
      */
     protected $signatureService;
 
@@ -78,9 +78,9 @@ class ESadad
     /**
      * Create a new ESadad instance.
      *
-     * @param  \YourVendor\ESadad\Services\EsadadConnectionService  $connectionService
-     * @param  \YourVendor\ESadad\Services\EsadadPreperingService  $preparingService
-     * @param  \YourVendor\ESadad\Services\EsadadSignatureService  $signatureService
+     * @param  \MohZubiri\ESadad\Services\EsadadConnectionService  $connectionService
+     * @param  \MohZubiri\ESadad\Services\EsadadPreperingService  $preparingService
+     * @param  \MohZubiri\ESadad\Services\EsadadSignatureService  $signatureService
      * @param  array  $config
      * @return void
      */

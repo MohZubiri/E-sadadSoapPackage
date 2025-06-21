@@ -1,25 +1,25 @@
 <?php
 
-namespace YourVendor\ESadad\Http\Controllers;
+namespace MohZubiri\ESadad\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use YourVendor\ESadad\Services\EsadadConnectionService;
-use YourVendor\ESadad\Services\EsadadPreperingService;
+use MohZubiri\ESadad\Services\EsadadConnectionService;
+use MohZubiri\ESadad\Services\EsadadPreperingService;
 
 class ESadadPaymentController extends Controller
 {
     /**
      * The connection service instance.
      *
-     * @var \YourVendor\ESadad\Services\EsadadConnectionService
+     * @var \MohZubiri\ESadad\Services\EsadadConnectionService
      */
     protected $connectionService;
 
     /**
      * The preparing service instance.
      *
-     * @var \YourVendor\ESadad\Services\EsadadPreperingService
+     * @var \MohZubiri\ESadad\Services\EsadadPreperingService
      */
     protected $preparingService;
 
@@ -33,8 +33,8 @@ class ESadadPaymentController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  \YourVendor\ESadad\Services\EsadadConnectionService  $connectionService
-     * @param  \YourVendor\ESadad\Services\EsadadPreperingService  $preparingService
+     * @param  \MohZubiri\ESadad\Services\EsadadConnectionService  $connectionService
+     * @param  \MohZubiri\ESadad\Services\EsadadPreperingService  $preparingService
      * @return void
      */
     public function __construct(

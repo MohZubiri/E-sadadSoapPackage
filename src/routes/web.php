@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use YourVendor\ESadad\Http\Controllers\ESadadController;
+use MohZubiri\ESadad\Http\Controllers\ESadadController;
 
 // Get route configuration from package config
 $routeConfig = config('esadad.route', []);
@@ -14,7 +14,7 @@ Route::group([
     'prefix' => $prefix,
     'middleware' => $middleware,
     'as' => 'esadad.',
-    'namespace' => 'YourVendor\\ESadad\\Http\\Controllers',
+    'namespace' => 'MohZubiri\\ESadad\\Http\\Controllers',
 ], function () {
     /*
 |--------------------------------------------------------------------------

@@ -1,13 +1,13 @@
 <?php
 
-namespace YourVendor\ESadad\Services;
+namespace MohZubiri\ESadad\Services;
 
 class EsadadPreperingService extends BaseService
 {
     /**
      * The signature service instance.
      *
-     * @var \YourVendor\ESadad\Services\EsadadSignatureService
+     * @var \MohZubiri\ESadad\Services\EsadadSignatureService
      */
     protected $signatureService;
 
@@ -15,7 +15,7 @@ class EsadadPreperingService extends BaseService
      * Create a new service instance.
      *
      * @param  array  $config
-     * @param  \YourVendor\ESadad\Services\EsadadSignatureService  $signatureService
+     * @param  \MohZubiri\ESadad\Services\EsadadSignatureService  $signatureService
      * @return void
      */
     public function __construct(array $config, EsadadSignatureService $signatureService)

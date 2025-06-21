@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\ESadad\Console\Commands;
+namespace MohZubiri\ESadad\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -33,7 +33,7 @@ class InstallCommand extends Command
 
         // Publish configuration
         $this->call('vendor:publish', [
-            '--provider' => 'YourVendor\\ESadad\\Providers\\ESadadServiceProvider',
+            '--provider' => 'MohZubiri\\ESadad\\Providers\\ESadadServiceProvider',
             '--tag' => 'esadad-config',
             '--force' => $this->option('force'),
         ]);
@@ -41,7 +41,7 @@ class InstallCommand extends Command
         // Publish views
         if ($this->confirm('Publish package views?', true)) {
             $this->call('vendor:publish', [
-                '--provider' => 'YourVendor\\ESadad\\Providers\\ESadadServiceProvider',
+                '--provider' => 'MohZubiri\\ESadad\\Providers\\ESadadServiceProvider',
                 '--tag' => 'esadad-views',
                 '--force' => $this->option('force'),
             ]);
@@ -50,7 +50,7 @@ class InstallCommand extends Command
         // Publish assets
         if ($this->confirm('Publish package assets?', true)) {
             $this->call('vendor:publish', [
-                '--provider' => 'YourVendor\\ESadad\\Providers\\ESadadServiceProvider',
+                '--provider' => 'MohZubiri\\ESadad\\Providers\\ESadadServiceProvider',
                 '--tag' => 'esadad-assets',
                 '--force' => $this->option('force'),
             ]);

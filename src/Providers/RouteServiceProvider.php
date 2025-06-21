@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace YourVendor\ESadad\Providers;
+namespace MohZubiri\ESadad\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -46,7 +46,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-    protected $namespace = 'YourVendor\\ESadad\\Http\\Controllers';
+    protected $namespace = 'MohZubiri\\ESadad\\Http\\Controllers';
 
     /**
      * Get the package base directory.

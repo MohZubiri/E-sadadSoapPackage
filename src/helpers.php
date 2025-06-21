@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Arr;
-use YourVendor\ESadad\ESadad;
+use MohZubiri\ESadad\ESadad;
 
 if (! function_exists('config_path')) {
     /**
@@ -120,15 +120,10 @@ if (! interface_exists('App')) {
     class_alias('Illuminate\Support\Facades\App', 'App');
 }
 
-/**
- * Generate a URL to a named e-SADAD route.
- *
- * @param  string  $name
- * @param  mixed  $parameters
- * @param  bool  $absolute
- * @return string
- */
 if (! function_exists('esadad_route')) {
+    /**
+     * Generate a URL to a named e-SADAD route.
+     *
      * @param  string  $name
      * @param  mixed  $parameters
      * @param  bool  $absolute

@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\ESadad\Services;
+namespace MohZubiri\ESadad\Services;
 
 abstract class BaseService
 {

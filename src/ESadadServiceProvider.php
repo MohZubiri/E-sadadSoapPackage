@@ -1,15 +1,15 @@
 <?php
 
-namespace YourVendor\ESadad\Providers;
+namespace MohZubiri\ESadad\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
-use YourVendor\ESadad\Console\Commands\InstallCommand;
-use YourVendor\ESadad\ESadad;
-use YourVendor\ESadad\Services\EsadadConnectionService;
-use YourVendor\ESadad\Services\EsadadPreperingService;
-use YourVendor\ESadad\Services\EsadadSignatureService;
+use MohZubiri\ESadad\Console\Commands\InstallCommand;
+use MohZubiri\ESadad\ESadad;
+use MohZubiri\ESadad\Services\EsadadConnectionService;
+use MohZubiri\ESadad\Services\EsadadPreperingService;
+use MohZubiri\ESadad\Services\EsadadSignatureService;
 
 class ESadadServiceProvider extends ServiceProvider
 {
@@ -110,7 +110,7 @@ class ESadadServiceProvider extends ServiceProvider
         $prefix = $routeConfig['prefix'] ?? 'esadad';
         
         Route::group([
-            'namespace' => 'YourVendor\\ESadad\\Http\\Controllers',
+            'namespace' => 'MohZubiri\\ESadad\\Http\\Controllers',
             'prefix' => $prefix,
             'middleware' => $middleware,
             'as' => 'esadad.',

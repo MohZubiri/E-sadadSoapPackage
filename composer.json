@@ -1,0 +1,66 @@
+{
+    "name": "your-vendor/laravel-esadad",
+    "description": "Laravel e-SADAD payment gateway integration",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "YourVendor\\ESadad\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your.email@example.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "illuminate/console": "^10.0",
+        "illuminate/contracts": "^10.0",
+        "illuminate/support": "^10.0",
+        "illuminate/http": "^10.0",
+        "illuminate/routing": "^10.0",
+        "illuminate/database": "^10.0",
+        "illuminate/view": "^10.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "orchestra/testbench": "^8.0",
+        "phpstan/phpstan": "^1.10",
+        "nunomaduro/larastan": "^2.0",
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "YourVendor\\ESadad\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage",
+        "analyse": "vendor/bin/phpstan analyse",
+        "cs-check": "phpcs --standard=phpcs.xml",
+        "cs-fix": "phpcbf --standard=phpcs.xml"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "YourVendor\\ESadad\\Providers\\ESadadServiceProvider"
+            ],
+            "aliases": {
+                "ESadad": "YourVendor\\ESadad\\Facades\\ESadad"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

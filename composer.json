@@ -1,9 +1,10 @@
 {
     "name": "mohzubiri/laravel-esadad",
-    "description": "Laravel package for E-SADAD payment gateway integration with SOAP",
+    "description": "Laravel package for e-SADAD payment gateway integration",
     "keywords": ["laravel", "esadad", "payment", "gateway", "soap", "saudi", "knet"],
     "type": "library",
     "license": "MIT",
+    "version": "1.0.1",
     "autoload": {
         "psr-4": {
             "MohZubiri\\ESadad\\": "src/"
@@ -28,22 +29,22 @@
         "php": "^8.1|^8.2|^8.3",
         "ext-json": "*",
         "ext-soap": "*",
-        "illuminate/console": "^10.0|^11.0",
-        "illuminate/contracts": "^10.0|^11.0",
-        "illuminate/support": "^10.0|^11.0",
-        "illuminate/http": "^10.0|^11.0",
-        "illuminate/routing": "^10.0|^11.0",
-        "illuminate/database": "^10.0|^11.0",
-        "illuminate/view": "^10.0|^11.0",
-        "guzzlehttp/guzzle": "^7.0|^8.0"
+        "illuminate/console": "^10.0",
+        "illuminate/contracts": "^10.0",
+        "illuminate/support": "^10.0",
+        "illuminate/http": "^10.0",
+        "illuminate/routing": "^10.0",
+        "illuminate/database": "^10.0",
+        "illuminate/view": "^10.0",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0",
-        "orchestra/testbench": "^8.0|^9.0",
+        "orchestra/testbench": "^8.0",
         "phpstan/phpstan": "^1.10",
-        "mockery/mockery": "^1.5|^1.6",
-        "nunomaduro/larastan": "^2.6",
-        "squizlabs/php_codesniffer": "^3.7|^4.0"
+        "mockery/mockery": "^1.5",
+        "nunomaduro/larastan": "^2.0",
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",

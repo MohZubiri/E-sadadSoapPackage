@@ -12,6 +12,19 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Arr;
 use MohZubiri\ESadad\ESadad;
 
+// Import Laravel helper functions
+if (!function_exists('app')) {
+    require __DIR__.'/../../vendor/laravel/framework/src/Illuminate/Foundation/helpers.php';
+}
+
+if (!function_exists('config')) {
+    require __DIR__.'/../../vendor/laravel/framework/src/Illuminate/Foundation/helpers.php';
+}
+
+if (!function_exists('route')) {
+    require __DIR__.'/../../vendor/laravel/framework/src/Illuminate/Foundation/helpers.php';
+}
+
 if (! function_exists('config_path')) {
     /**
      * Get the configuration path.
@@ -89,7 +102,7 @@ if (! function_exists('esadad')) {
      *
      * @return ESadad
      */
-    function esadad(): ESadad
+    function esadad()
     {
         return app(ESadad::class);
     }

@@ -35,14 +35,12 @@ A Laravel package for integrating with the e-SADAD payment gateway. This package
 
 ## Installation
 
-## Installation
-
 ### For Laravel Applications
 
 1. Install the package via Composer:
 
 ```bash
-composer require mohzubiri/laravel-esadad:^1.0.6
+composer require mohzubiri/laravel-esadad:^1.0.7
 ```
 
 2. Publish the configuration file:

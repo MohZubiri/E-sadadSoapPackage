@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller;
 use MohZubiri\ESadad\Services\EsadadConnectionService;
 use MohZubiri\ESadad\Services\EsadadPreperingService;
 
-class ESadadPaymentController extends Controller
+class ESadadController extends Controller
 {
     /**
      * The connection service instance.

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use MohZubiri\ESadad\Http\Controllers\ESadadController;
+use MohZubiri\ESadad\Http\Controllers\ESadadPaymentController;
 
 // Get route configuration from package config
 $routeConfig = config('esadad.route', []);
@@ -27,29 +27,29 @@ Route::group([
     'namespace' => 'MohZubiri\\ESadad\\Http\\Controllers',
 ], function () {
     // Payment form
-    Route::get('payment', [ESadadController::class, 'showPaymentForm'])
+    Route::get('payment', [ESadadPaymentController::class, 'showPaymentForm'])
         ->name('payment.form');
     
     // Process payment (will redirect to e-SADAD)
-    Route::post('process', [ESadadController::class, 'processPayment'])
+    Route::post('process', [ESadadPaymentController::class, 'processPayment'])
         ->name('payment.process');
     
     // OTP verification
-    Route::get('verify-otp', [ESadadController::class, 'showOtpForm'])
+    Route::get('verify-otp', [ESadadPaymentController::class, 'showOtpForm'])
         ->name('otp.form');
         
-    Route::post('verify-otp', [ESadadController::class, 'verifyOtp'])
+    Route::post('verify-otp', [ESadadPaymentController::class, 'verifyOtp'])
         ->name('otp.verify');
     
     // Payment success/failure pages
-    Route::get('success', [ESadadController::class, 'paymentSuccess'])
+    Route::get('success', [ESadadPaymentController::class, 'paymentSuccess'])
         ->name('payment.success');
         
-    Route::get('failure', [ESadadController::class, 'paymentFailure'])
+    Route::get('failure', [ESadadPaymentController::class, 'paymentFailure'])
         ->name('payment.failure');
     
     // Callback from e-SADAD (should be accessible without CSRF protection)
-    Route::match(['get', 'post'], 'callback', [ESadadController::class, 'handleCallback'])
+    Route::match(['get', 'post'], 'callback', [ESadadPaymentController::class, 'handleCallback'])
         ->withoutMiddleware(['web'])
         ->name('payment.callback');
 });

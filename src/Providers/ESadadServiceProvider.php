@@ -146,7 +146,16 @@ class ESadadServiceProvider extends ServiceProvider implements DeferrableProvide
         ];
 
         Route::group($routeConfig, function () {
-            $this->loadRoutesFrom($this->packagePath . '/routes/web.php');
+            $routesPath = __DIR__ . '/../routes/web.php';
+            if (file_exists($routesPath)) {
+                $this->loadRoutesFrom($routesPath);
+            } else {
+                // Fallback to package path
+                $fallbackPath = $this->packagePath . '/src/routes/web.php';
+                if (file_exists($fallbackPath)) {
+                    $this->loadRoutesFrom($fallbackPath);
+                }
+            }
         });
     }
 

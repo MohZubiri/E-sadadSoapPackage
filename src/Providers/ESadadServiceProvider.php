@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 namespace MohZubiri\ESadad\Providers;
 
+use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Foundation\Application as LaravelApplication;
-use Laravel\Lumen\Application as LumenApplication;
-use MohZubiri\ESadad\Commands\InstallCommand;
-use MohZubiri\ESadad\ESadad;
-use MohZubiri\ESadad\Http\Controllers\ESadadController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Lumen\Application as LumenApplication;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use MohZubiri\ESadad\ESadad;
+use MohZubiri\ESadad\Services\EsadadConnectionService;
+use MohZubiri\ESadad\Services\EsadadPreperingService;
+use MohZubiri\ESadad\Services\EsadadSignatureService;
+use MohZubiri\ESadad\Commands\InstallCommand;
+use MohZubiri\ESadad\Http\Controllers\ESadadController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
@@ -83,6 +88,22 @@ class ESadadServiceProvider extends ServiceProvider implements DeferrableProvide
             __DIR__.'/../../config/esadad.php', 'esadad'
         );
 
+        // Bind the services with their dependencies
+        $this->app->singleton(EsadadSignatureService::class, function () {
+            return new EsadadSignatureService();
+        });
+
+        $this->app->singleton(EsadadConnectionService::class, function ($app) {
+            $config = $app->make('config')->get('esadad', []);
+            $signatureService = $app->make(EsadadSignatureService::class);
+            return new EsadadConnectionService($config, $signatureService);
+        });
+
+        $this->app->singleton(EsadadPreperingService::class, function ($app) {
+            $config = $app->make('config')->get('esadad', []);
+            return new EsadadPreperingService($config);
+        });
+
         $this->app->singleton('esadad', function (Container $app): ESadad {
             /** @var array{merchant_id: string, terminal_id: string, encryption_key: string, callback_url: string, sandbox: bool} $config */
             $config = $app->make('config')->get('esadad', [
@@ -93,12 +114,21 @@ class ESadadServiceProvider extends ServiceProvider implements DeferrableProvide
                 'sandbox' => true,
             ]);
 
+            $connectionService = $app->make(EsadadConnectionService::class);
+            $preparingService = $app->make(EsadadPreperingService::class);
+            $signatureService = $app->make(EsadadSignatureService::class);
+
             return new ESadad(
-                $config['merchant_id'],
-                $config['terminal_id'],
-                $config['encryption_key'],
-                $config['callback_url'],
-                $config['sandbox']
+                $connectionService,
+                $preparingService,
+                $signatureService,
+                [
+                    'merchant_id' => $config['merchant_id'],
+                    'terminal_id' => $config['terminal_id'],
+                    'encryption_key' => $config['encryption_key'],
+                    'callback_url' => $config['callback_url'],
+                    'sandbox' => $config['sandbox']
+                ]
             );
         });
 

@@ -4,6 +4,14 @@ All notable changes to `mohzubiri/laravel-esadad` will be documented in this fil
 
 ## [Unreleased]
 
+## [1.0.13] - 2025-06-21
+### Fixed
+- Fixed service provider binding for EsadadConnectionService
+- Added proper dependency injection for service classes
+- Updated service container bindings in ESadadServiceProvider
+- Fixed syntax errors in service provider
+- Added missing use statements for better IDE support
+
 ## [1.0.6] - 2025-06-21
 ### Fixed
 - Fixed unterminated comment in routes file

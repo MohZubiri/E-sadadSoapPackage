@@ -4,9 +4,9 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/mohzubiri/laravel-esadad.svg?style=flat-square)](https://packagist.org/packages/mohzubiri/laravel-esadad)
 [![License](https://img.shields.io/packagist/l/mohzubiri/laravel-esadad.svg?style=flat-square)](https://github.com/MohZubiri/E-sadadSoapPackage/blob/main/LICENSE)
 [![PHP Version](https://img.shields.io/packagist/php-v/mohzubiri/laravel-esadad.svg?style=flat-square)](https://php.net/)
-[![Laravel Version](https://img.shields.io/badge/Laravel-10.x%2B-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
+[![Laravel Version](https://img.shields.io/badge/Laravel-10.x%7C11.x%7C12.x-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
 
-A Laravel package for integrating with the e-SADAD payment gateway. This package provides a simple and clean API to process payments through the e-SADAD payment system. The package is now more stable and includes several improvements for better integration with Laravel applications.
+A Laravel package for integrating with the e-SADAD payment gateway. This package provides a simple and clean API to process payments through the e-SADAD payment system. The package is now more stable and includes several improvements for better integration with Laravel applications, including full support for Laravel 12.
 
 ## Features
 

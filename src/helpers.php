@@ -12,14 +12,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Arr;
 use MohZubiri\ESadad\ESadad;
 
-// Import Laravel helper functions
-use function app;
-use function config;
-use function route;
-use function base_path;
-use function config_path;
-use function resource_path;
-use function public_path;
+// Laravel helper functions will be available through the global namespace
 
 if (! function_exists('config_path')) {
     /**

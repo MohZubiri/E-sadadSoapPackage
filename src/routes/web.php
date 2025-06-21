@@ -10,13 +10,7 @@ $routeConfig = config('esadad.route', []);
 $prefix = $routeConfig['prefix'] ?? 'esadad';
 $middleware = array_merge(['web'], $routeConfig['middleware'] ?? []);
 
-Route::group([
-    'prefix' => $prefix,
-    'middleware' => $middleware,
-    'as' => 'esadad.',
-    'namespace' => 'MohZubiri\\ESadad\\Http\\Controllers',
-], function () {
-    /*
+/*
 |--------------------------------------------------------------------------
 | e-SADAD Payment Routes
 |--------------------------------------------------------------------------
@@ -24,6 +18,16 @@ Route::group([
 | Here is where you can register web routes for the e-SADAD payment gateway.
 | These routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group.
+*/
+
+Route::group([
+    'prefix' => $prefix,
+    'middleware' => $middleware,
+    'as' => 'esadad.',
+    'namespace' => 'MohZubiri\\ESadad\\Http\\Controllers',
+], function () {
+    // Payment form
+    Route::get('payment', [ESadadController::class, 'showPaymentForm'])
         ->name('payment.form');
     
     // Process payment (will redirect to e-SADAD)

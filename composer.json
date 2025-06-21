@@ -1,25 +1,33 @@
 {
-    "name": "your-vendor/laravel-esadad",
-    "description": "Laravel e-SADAD payment gateway integration",
+    "name": "mohzubiri/laravel-esadad",
+    "description": "Laravel package for E-SADAD payment gateway integration with SOAP",
+    "keywords": ["laravel", "esadad", "payment", "gateway", "soap", "saudi", "knet"],
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "YourVendor\\ESadad\\": "src/"
+            "MohZubiri\\ESadad\\": "src/"
         },
         "files": [
             "src/helpers.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "MohZubiri\\ESadad\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
-            "name": "Your Name",
-            "email": "your.email@example.com"
+            "name": "Mohammed Zubiri",
+            "email": "moh.hak2030@gmail.com",
+            "homepage": "https://github.com/MohZubiri"
         }
     ],
     "require": {
         "php": "^8.1",
         "ext-json": "*",
+        "ext-soap": "*",
         "illuminate/console": "^10.0",
         "illuminate/contracts": "^10.0",
         "illuminate/support": "^10.0",
@@ -33,34 +41,32 @@
         "phpunit/phpunit": "^10.0",
         "orchestra/testbench": "^8.0",
         "phpstan/phpstan": "^1.10",
+        "mockery/mockery": "^1.5",
         "nunomaduro/larastan": "^2.0",
         "squizlabs/php_codesniffer": "^3.7"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "YourVendor\\ESadad\\Tests\\": "tests/"
-        }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage",
         "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
         "cs-check": "phpcs --standard=phpcs.xml",
         "cs-fix": "phpcbf --standard=phpcs.xml"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "YourVendor\\ESadad\\Providers\\ESadadServiceProvider"
+                "MohZubiri\\ESadad\\ESadadServiceProvider"
             ],
             "aliases": {
-                "ESadad": "YourVendor\\ESadad\\Facades\\ESadad"
+                "ESadad": "MohZubiri\\ESadad\\Facades\\ESadad"
             }
         }
     },
-    "config": {
-        "sort-packages": true
-    },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    }
 }
